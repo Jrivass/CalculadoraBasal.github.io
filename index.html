@@ -27,9 +27,12 @@
                 fluidRequirement = weight * 100;
             } else if (weight <= 20) {
                 fluidRequirement = 10 * 100 + (weight - 10) * 50;
-            } else {
+            } else if (weight <= 30 ) {
                 fluidRequirement = 10 * 100 + 10 * 50 + (weight - 20) * 20;
             }
+              else
+                   fluidRequirement = ( (weight * 4) + 7) / (weight + 90) 
+              }
 
             resultElement.textContent = `El requerimiento de líquidos es de ${fluidRequirement}cc por día.`;
         }
