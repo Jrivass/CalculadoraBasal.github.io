@@ -63,6 +63,12 @@
                 resultadoDiv.innerHTML = "";
                 opcionSCDiv.style.display = "none"; // Ocultar los botones de elección SC * 1500 o SC * 2000
                 return;
+            if (isNaN(peso) || peso > 45) {
+                alert("Ingrese un peso válido, un niño promedio pesa menos de 45kg.");
+                pesoInput.value = ""; // Limpiar el campo de entrada
+                resultadoDiv.innerHTML = "";
+                opcionSCDiv.style.display = "none"; // Ocultar los botones de elección SC * 1500 o SC * 2000
+                return;
             }
 
             var resultado = {};
