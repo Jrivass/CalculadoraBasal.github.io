@@ -57,14 +57,10 @@
 
             var peso = parseFloat(pesoInput.value);
 
-            if (isNaN(peso) || peso <= 0){
-                alert("Ingrese un peso válido.");
+                
+             if (isNaN(peso) || peso <= 0 || peso > 50) {
+                alert("Ingrese un peso válido entre 0 y 50 kg.");
                 pesoInput.value = ""; // Limpiar el campo de entrada
-                resultadoDiv.innerHTML = "";
-                opcionSCDiv.style.display = "none"; // Ocultar los botones de elección SC * 1500 o SC * 2000
-            }
-            else if (isNaN(peso) || peso > 50){
-                alert("Ingrese un peso válido, un niño promedio pesa menos de 50kg");
                 resultadoDiv.innerHTML = "";
                 opcionSCDiv.style.display = "none"; // Ocultar los botones de elección SC * 1500 o SC * 2000
                 return;
