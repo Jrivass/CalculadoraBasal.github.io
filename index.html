@@ -48,8 +48,6 @@
         // Esta función se llama cuando se hace clic en el botón de calcular
         function calculate() {
             var pesoInput = document.getElementById("peso");
-            var metodo1500 = document.getElementById("metodo1500");
-            var metodo2000 = document.getElementById("metodo2000");
             var resultadoDiv = document.getElementById("resultado");
             var opcionSCDiv = document.getElementById("opcionSC");
             var btn1500 = document.getElementById("btn1500");
@@ -57,8 +55,7 @@
 
             var peso = parseFloat(pesoInput.value);
 
-                
-             if (isNaN(peso) || peso <= 0 || peso >= 50 ) {
+            if (isNaN(peso) || peso <= 0 || peso >= 50) {
                 alert("Ingrese un peso válido entre 0 y 50 kg.");
                 pesoInput.value = ""; // Limpiar el campo de entrada
                 resultadoDiv.innerHTML = "";
@@ -77,7 +74,6 @@
             } else {
                 // Calcular superficie corporal
                 var superficieCorporal = ((peso * 4) + 7) / (peso + 90);
-                resultado.volumenDiario = superficieCorporal * parseFloat(metodo1500.value);
                 opcionSCDiv.style.display = "block"; // Mostrar los botones de elección SC * 1500 o SC * 2000
 
                 btn1500.addEventListener("click", function() {
@@ -119,5 +115,6 @@
     </script>
 </body>
 </html>
+
 
 
