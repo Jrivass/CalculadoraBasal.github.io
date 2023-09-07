@@ -73,7 +73,7 @@
                 resultado.volumenDiario = 1000 + 500 + ((peso - 20) * 20);
             } else {
                 // Calcular superficie corporal
-                var superficieCorporal = ((peso * 4) + 7) / (peso + 90);
+                var superficieCorporal = (((peso * 4) + 7) / (peso + 90));
                 resultado.volumenDiario = superficieCorporal * parseFloat(metodoSeleccionado.value);
                 opcionSCButton.style.display = "block"; // Mostrar el botón de elección SC * 1500 o SC * 2000
             }
