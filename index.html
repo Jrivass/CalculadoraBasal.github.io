@@ -9,12 +9,6 @@
     <label for="peso">Peso del niño (kg):</label>
     <input type="number" id="peso"><br><br>
 
-    <label>Seleccione el método:</label>
-    <input type="radio" id="metodo1500" name="metodo" value="1500">
-    <label for="metodo1500">1500 cc</label>
-    <input type="radio" id="metodo2000" name="metodo" value="2000">
-    <label for="metodo2000">2000 cc</label><br><br>
-
     <button id="calcular">Calcular</button><br><br>
 
     <div id="resultado"></div>
@@ -63,9 +57,14 @@
 
             var peso = parseFloat(pesoInput.value);
 
-            if (isNaN(peso) || peso <= 0) {
+            if (isNaN(peso) || peso <= 0){
                 alert("Ingrese un peso válido.");
                 pesoInput.value = ""; // Limpiar el campo de entrada
+                resultadoDiv.innerHTML = "";
+                opcionSCDiv.style.display = "none"; // Ocultar los botones de elección SC * 1500 o SC * 2000
+            }
+            else if (isNaN(peso) || peso > 50){
+                alert("Ingrese un peso válido, un niño promedio pesa menos de 50kg");
                 resultadoDiv.innerHTML = "";
                 opcionSCDiv.style.display = "none"; // Ocultar los botones de elección SC * 1500 o SC * 2000
                 return;
