@@ -58,7 +58,7 @@
             var peso = parseFloat(pesoInput.value);
 
                 
-             if (isNaN(peso) || peso <= 0 || peso <=50 ) {
+             if (isNaN(peso) || peso <= 0 || peso >= 50 ) {
                 alert("Ingrese un peso válido entre 0 y 50 kg.");
                 pesoInput.value = ""; // Limpiar el campo de entrada
                 resultadoDiv.innerHTML = "";
