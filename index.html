@@ -1,52 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Método Holliday-Segar</title>
+    <title>Calculadora Basal</title>
 </head>
 <body>
-    <h1>Calculadora Método Holliday-Segar</h1>
-    <form id="holliday-segar-form">
-        <label for="weight">Peso del niño (en kg):</label>
-       <input type="number" id="weight" min="1" step="1" required>
-                
-        <button type="button" onclick="calculate()">Calcular</button>
-    </form>
+    <h1>Calculadora Basal</h1>
+    
+    <button id="explicacion">Explicación</button><br><br>
+    
+    <div id="info" style="display: none;">
+        <h2>¿Cómo se calcula?</h2>
+        <ul>
+            <li>De 0kg a 10kg, se calcula 100cc por cada kilo.</li>
+            <li>Se suman 50cc por cada kilo de peso por arriba de 10kg, hasta 20kg.</li>
+            <li>De 20kg para arriba, se suman 20cc por cada kilo adicional.</li>
+            <li>Para menores de 30kg se calcula por Holliday-Segar:</li>
+            <ul>
+                <li>Volumen diario en cc.</li>
+                <li>Mantenimiento en cc/hr (sería el volumen diario dividido 24hs).</li>
+                <li>m+m/2 (sería el mantenimiento en cc/hr + el mantenimiento en cc/hr dividido 2).</li>
+            </ul>
+            <li>Para mayores de 30kg se calcula por SC (SC * 1500 o SC * 2000).</li>
+        </ul>
+    </div>
 
-    <p id="result"></p>
+    <label for="peso">Peso del niño (kg):</label>
+    <input type="number" id="peso"><br><br>
+
+    <label>Seleccione el método:</label>
+    <input type="radio" id="metodo1500" name="metodo" value="1500">
+    <label for="metodo1500">1500 cc</label>
+    <input type="radio" id="metodo2000" name="metodo" value="2000">
+    <label for="metodo2000">2000 cc</label><br><br>
+
+    <button id="calcular">Calcular</button><br><br>
+
+    <div id="resultado"></div>
 
     <script>
-        
-      // Esta función verifica si se presionó "Enter" y llama a la función calculate()
-        document.getElementById("weight").addEventListener("keydown", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault(); // Evitar la recarga de la página
-                calculate();
+        // Obtener elementos del DOM
+        var pesoInput = document.getElementById("peso");
+        var metodo1500 = document.getElementById("metodo1500");
+        var metodo2000 = document.getElementById("metodo2000");
+        var calcularButton = document.getElementById("calcular");
+        var resultadoDiv = document.getElementById("resultado");
+        var explicacionButton = document.getElementById("explicacion");
+        var infoDiv = document.getElementById("info");
+
+        // Agregar evento al botón de explicación
+        explicacionButton.addEventListener("click", function() {
+            // Mostrar u ocultar la información según su estado actual
+            if (infoDiv.style.display === "none") {
+                infoDiv.style.display = "block";
+            } else {
+                infoDiv.style.display = "none";
             }
         });
 
-        
-        function calculate() {
-            const weightInput = document.getElementById("weight");
-            const resultElement = document.getElementById("result");
-            const weight = parseFloat(weightInput.value);
+        // Agregar evento al botón de calcular
+        calcularButton.addEventListener("click", function() {
+            var peso = parseFloat(pesoInput.value);
+            var metodoSeleccionado = metodo1500.checked ? 1500 : 2000;
+            var resultado = {};
 
-            let fluidRequirement = 0;
-
-            if (weight <= 10) {
-                fluidRequirement = weight * 100;
-            } else if (weight <= 20) {
-                fluidRequirement = 10 * 100 + (weight - 10) * 50;
-            } else if (weight <= 30 ) {
-                fluidRequirement = 10 * 100 + 10 * 50 + (weight - 20) * 20;
+            if (peso > 50) {
+                alert("El peso no puede ser mayor a 50 kg. Por favor, ingrese un valor válido.");
+                pesoInput.value = ""; // Limpiar el campo de entrada
+                return;
             }
-              else {
-                   fluidRequirement = ( (weight * 4) + 7) / (weight + 90) 
-              }
 
-            resultElement.textContent = `El requerimiento de líquidos es de ${fluidRequirement}cc por día.`;
-        }
+            if (peso <= 10) {
+                resultado.volumenDiario = peso * 100;
+            } else if (peso <= 20) {
+                resultado.volumenDiario = 1000 + ((peso - 10) * 50);
+            } else if (peso <= 30) {
+                resultado.volumenDiario = 1000 + 500 + ((peso - 20) * 20);
+            } else {
+                // Calcular superficie corporal
+                var superficieCorporal = ((peso * 4) + 7) / (peso + 90);
+                resultado.volumenDiario = superficieCorporal * metodoSeleccionado;
+            }
+
+            // Calcular Mantenimiento en cc/hr
+            resultado.mantenimientoCCHr = resultado.volumenDiario / 24;
+
+            // Calcular m+m/2
+            resultado.mmMasMedio = resultado.mantenimientoCCHr + (resultado.mantenimientoCCHr / 2);
+
+            resultadoDiv.innerHTML = `Resultados:<br>Volumen diario en cc: ${resultado.volumenDiario} cc<br>Mantenimiento en cc/hr: ${resultado.mantenimientoCCHr.toFixed(2)} cc/hr<br>m+m/2: ${resultado.mmMasMedio.toFixed(2)} cc/hr`;
+
+        });
     </script>
 </body>
 </html>
