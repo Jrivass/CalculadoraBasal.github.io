@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Método Holliday-Segar</title>
+</head>
+<body>
+    <h1>Calculadora Método Holliday-Segar</h1>
+    <form id="holliday-segar-form">
+        <label for="weight">Peso del niño (en kg):</label>
+        <input type="number" id="weight" min="1" step="1" required>
+        <button type="button" onclick="calculate()">Calcular</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        function calculate() {
+            const weightInput = document.getElementById("weight");
+            const resultElement = document.getElementById("result");
+            const weight = parseFloat(weightInput.value);
+
+            let fluidRequirement = 0;
+
+            if (weight <= 10) {
+                fluidRequirement = weight * 100;
+            } else if (weight <= 20) {
+                fluidRequirement = 10 * 100 + (weight - 10) * 50;
+            } else {
+                fluidRequirement = 10 * 100 + 10 * 50 + (weight - 20) * 20;
+            }
+
+            resultElement.textContent = `El requerimiento de líquidos es de ${fluidRequirement}cc por día.`;
+        }
+    </script>
+</body>
+</html>
