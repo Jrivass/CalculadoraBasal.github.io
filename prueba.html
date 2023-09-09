@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Productos</title>
+</head>
+<body>
+    <h1>Productos Disponibles</h1>
+    <ul id="listaProductos">
+        <!-- Aquí se mostrarán los productos -->
+    </ul>
+
+    <script>
+        // Definimos un vector de productos
+        var listaDeProductos = [
+            { nombre: "Camiseta", precio: 20, descripcion: "Camiseta de algodón suave" },
+            { nombre: "Pantalones", precio: 40, descripcion: "Pantalones vaqueros de moda" },
+            { nombre: "Zapatillas", precio: 60, descripcion: "Zapatillas deportivas cómodas" }
+        ];
+
+        // Obtenemos la referencia al elemento <ul> en el HTML
+        var listaProductosElement = document.getElementById("listaProductos");
+
+        // Recorremos el vector de productos y creamos elementos <li> para cada producto
+        for (var i = 0; i < listaDeProductos.length; i++) {
+            var producto = listaDeProductos[i];
+            var li = document.createElement("li");
+            li.innerHTML = `
+                <strong>Nombre:</strong> ${producto.nombre}<br>
+                <strong>Precio:</strong> $${producto.precio}<br>
+                <strong>Descripción:</strong> ${producto.descripcion}<br>
+                -------------------------
+            `;
+            listaProductosElement.appendChild(li);
+        }
+    </script>
+</body>
+</html>
