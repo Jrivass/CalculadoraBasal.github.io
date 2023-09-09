@@ -67,18 +67,12 @@
 
             if (peso <= 10) {
                 resultado.volumenDiario = peso * 100;
-                resultado.mantenimientoCCHr = resultado.volumenDiario / 24;
-                resultado.mmMasMedio = resultado.mantenimientoCCHr + (resultado.mantenimientoCCHr / 2);
             } 
             else if (peso <= 20) {
                 resultado.volumenDiario = 1000 + ((peso - 10) * 50);
-                resultado.mantenimientoCCHr = resultado.volumenDiario / 24;
-                resultado.mmMasMedio = resultado.mantenimientoCCHr + (resultado.mantenimientoCCHr / 2);
             } 
             else if (peso <= 30) {
                 resultado.volumenDiario = 1000 + 500 + ((peso - 20) * 20);
-                resultado.mantenimientoCCHr = resultado.volumenDiario / 24;
-                resultado.mmMasMedio = resultado.mantenimientoCCHr + (resultado.mantenimientoCCHr / 2);
             } 
             else {
                 // Calcular superficie corporal para peso mayor a 30 kg
@@ -87,15 +81,11 @@
 
                 btn1500.addEventListener("click", function() {
                     resultado.volumenDiario = superficieCorporal * 1500;
-                    resultado.mantenimientoCCHr = null;
-                    resultado.mmMasMedio = null;
                     mostrarResultados(resultado);
                 });
 
                 btn2000.addEventListener("click", function() {
                     resultado.volumenDiario = superficieCorporal * 2000;
-                    resultado.mantenimientoCCHr = null;
-                    resultado.mmMasMedio = null;
                     mostrarResultados(resultado);
                 });
             }
@@ -109,12 +99,14 @@
             var resultadoDiv = document.getElementById("resultado");
             resultadoDiv.innerHTML = `Resultados:<br>Volumen diario en cc: ${resultado.volumenDiario.toFixed(2)} cc`;
             
-            if (resultado.mantenimientoCCHr !== null && resultado.mmMasMedio !== null) {
-                resultadoDiv.innerHTML += `<br>Mantenimiento en cc/hr: ${resultado.mantenimientoCCHr.toFixed(2)} cc/hr<br>m+m/2: ${resultado.mmMasMedio.toFixed(2)} cc/hr`;
-            } else if (resultado.mantenimientoCCHr !== null) {
-                resultadoDiv.innerHTML += `<br>Mantenimiento en cc/hr: ${resultado.mantenimientoCCHr.toFixed(2)} cc/hr`;
-            } else if (resultado.mmMasMedio !== null) {
-                resultadoDiv.innerHTML += `<br>m+m/2: ${resultado.mmMasMedio.toFixed(2)} cc/hr`;
+            if (resultado.volumenDiario && resultado.volumenDiario !== 0) {
+                if (resultado.mantenimientoCCHr !== undefined && resultado.mmMasMedio !== undefined) {
+                    resultadoDiv.innerHTML += `<br>Mantenimiento en cc/hr: ${resultado.mantenimientoCCHr.toFixed(2)} cc/hr<br>m+m/2: ${resultado.mmMasMedio.toFixed(2)} cc/hr`;
+                } else if (resultado.mantenimientoCCHr !== undefined) {
+                    resultadoDiv.innerHTML += `<br>Mantenimiento en cc/hr: ${resultado.mantenimientoCCHr.toFixed(2)} cc/hr`;
+                } else if (resultado.mmMasMedio !== undefined) {
+                    resultadoDiv.innerHTML += `<br>m+m/2: ${resultado.mmMasMedio.toFixed(2)} cc/hr`;
+                }
             }
         }
 
@@ -131,3 +123,4 @@
     </script>
 </body>
 </html>
+
