@@ -108,8 +108,13 @@
         function mostrarResultados(resultado) {
             var resultadoDiv = document.getElementById("resultado");
             resultadoDiv.innerHTML = `Resultados:<br>Volumen diario en cc: ${resultado.volumenDiario.toFixed(2)} cc`;
+            
             if (resultado.mantenimientoCCHr !== null && resultado.mmMasMedio !== null) {
                 resultadoDiv.innerHTML += `<br>Mantenimiento en cc/hr: ${resultado.mantenimientoCCHr.toFixed(2)} cc/hr<br>m+m/2: ${resultado.mmMasMedio.toFixed(2)} cc/hr`;
+            } else if (resultado.mantenimientoCCHr !== null) {
+                resultadoDiv.innerHTML += `<br>Mantenimiento en cc/hr: ${resultado.mantenimientoCCHr.toFixed(2)} cc/hr`;
+            } else if (resultado.mmMasMedio !== null) {
+                resultadoDiv.innerHTML += `<br>m+m/2: ${resultado.mmMasMedio.toFixed(2)} cc/hr`;
             }
         }
 
