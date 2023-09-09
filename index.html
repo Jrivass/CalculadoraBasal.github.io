@@ -80,15 +80,13 @@
                 opcionSCDiv.style.display = "block"; // Mostrar los botones de elección SC * 1500 o SC * 2000
 
                 btn1500.addEventListener("click", function() {
-                    resultado.volumenDiario = resultado.volumenDiario || 0; // Inicializar si no está definido
-                    resultado.volumenDiario += (peso - 30) * 1500;
-                    mostrarResultados(resultado);
+                    resultado.volumenDiario = (peso - 30) * 1500;
+                    calcularMantenimiento(resultado); // Llamamos a la función de cálculo aquí
                 });
 
                 btn2000.addEventListener("click", function() {
-                    resultado.volumenDiario = resultado.volumenDiario || 0; // Inicializar si no está definido
-                    resultado.volumenDiario += (peso - 30) * 2000;
-                    mostrarResultados(resultado);
+                    resultado.volumenDiario = (peso - 30) * 2000;
+                    calcularMantenimiento(resultado); // Llamamos a la función de cálculo aquí
                 });
             }
 
@@ -98,6 +96,11 @@
             resultado.mmMasMedio = resultado.mantenimientoCCHr + (resultado.mantenimientoCCHr / 2);
 
             // Mostrar resultados
+            mostrarResultados(resultado);
+        }
+
+        // Función para calcular el mantenimiento y m+m/2
+        function calcularMantenimiento(resultado) {
             mostrarResultados(resultado);
         }
 
@@ -125,6 +128,4 @@
     </script>
 </body>
 </html>
-
-
 
