@@ -3,10 +3,12 @@
 <head>
     <title>Calculadora Basal</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
+    <div id="fondo-exterior">
+    <div id="contenedor">
     <h1>Calculadora Basal</h1>
-    
     <label for="peso">Peso del niño (kg):</label>
     <input type="number" id="peso">
 
@@ -17,7 +19,7 @@
     <div id="opcionSC" style="display: none;">
         <button id="btn1500">1500</button>
         <button id="btn2000">2000</button>
-    </div><br><br>
+    </div><br>
 
     <button id="explicacion">Explicación</button><br><br>
     
@@ -36,99 +38,10 @@
             <li>Para mayores de 30kg se calcula por SC (SC * 1500 o SC * 2000).</li>
         </ul>
     </div>
-
-    <script>
-        // Esta función verifica si se presionó "Enter" en el campo de peso y llama a la función calculate()
-        document.getElementById("peso").addEventListener("keydown", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault(); // Evitar la recarga de la página
-                calculate();
-            }
-        });
-
-        // Esta función se llama cuando se hace clic en el botón de calcular
-        function calculate() {
-            var pesoInput = document.getElementById("peso");
-            var resultadoDiv = document.getElementById("resultado");
-            var opcionSCDiv = document.getElementById("opcionSC");
-            var btn1500 = document.getElementById("btn1500");
-            var btn2000 = document.getElementById("btn2000");
-            var peso = parseFloat(pesoInput.value);
-
-            if (isNaN(peso) || peso <= 0 || peso >= 50) {
-                alert("Ingrese un peso válido entre 0 y 50 kg.");
-                pesoInput.value = ""; // Limpiar el campo de entrada
-                resultadoDiv.innerHTML = "";
-                opcionSCDiv.style.display = "none"; // Ocultar los botones de elección SC * 1500 o SC * 2000
-                return;
-            }
-
-            var resultado = {};
-
-            if (peso <= 10) {
-                resultado.volumenDiario = peso * 100;
-                resultado.mantenimientoCCHr = resultado.volumenDiario / 24;
-                resultado.mmMasMedio = resultado.mantenimientoCCHr + (resultado.mantenimientoCCHr / 2);
-            } 
-            else if (peso <= 20) {
-                resultado.volumenDiario = 1000 + ((peso - 10) * 50);
-                resultado.mantenimientoCCHr = resultado.volumenDiario / 24;
-                resultado.mmMasMedio = resultado.mantenimientoCCHr + (resultado.mantenimientoCCHr / 2);
-            } 
-            else if (peso <= 30) {
-                resultado.volumenDiario = 1000 + 500 + ((peso - 20) * 20);
-                resultado.mantenimientoCCHr = resultado.volumenDiario / 24;
-                resultado.mmMasMedio = resultado.mantenimientoCCHr + (resultado.mantenimientoCCHr / 2);
-            } 
-            else {
-                // Calcular superficie corporal para peso mayor a 30 kg
-                var superficieCorporal = ((peso * 4) + 7) / (peso + 90);
-                opcionSCDiv.style.display = "block"; // Mostrar los botones de elección SC * 1500 o SC * 2000
-
-                btn1500.addEventListener("click", function() {
-                    resultado.volumenDiario = superficieCorporal * 1500;
-                    resultado.mantenimientoCCHr = null;
-                    resultado.mmMasMedio = null;
-                    mostrarResultados(resultado);
-                });
-
-                btn2000.addEventListener("click", function() {
-                    resultado.volumenDiario = superficieCorporal * 2000;
-                    resultado.mantenimientoCCHr = null;
-                    resultado.mmMasMedio = null;
-                    mostrarResultados(resultado);
-                });
-            }
-
-            // Mostrar resultados
-            mostrarResultados(resultado);
-        }
-
-        // Función para mostrar los resultados
-        function mostrarResultados(resultado) {
-            var resultadoDiv = document.getElementById("resultado");
-            resultadoDiv.innerHTML = `Resultados:<br>Volumen diario en cc: ${resultado.volumenDiario.toFixed(2)} cc`;
-            
-            if (resultado.mantenimientoCCHr !== null && resultado.mmMasMedio !== null) {
-                resultadoDiv.innerHTML += `<br>Mantenimiento en cc/hr: ${resultado.mantenimientoCCHr.toFixed(2)} cc/hr<br>m+m/2: ${resultado.mmMasMedio.toFixed(2)} cc/hr`;
-            } else if (resultado.mantenimientoCCHr !== null) {
-                resultadoDiv.innerHTML += `<br>Mantenimiento en cc/hr: ${resultado.mantenimientoCCHr.toFixed(2)} cc/hr`;
-            } else if (resultado.mmMasMedio !== null) {
-                resultadoDiv.innerHTML += `<br>m+m/2: ${resultado.mmMasMedio.toFixed(2)} cc/hr`;
-            }
-        }
-
-        // Agregar evento al botón de explicación
-        document.getElementById("explicacion").addEventListener("click", function() {
-            // Mostrar u ocultar la información según su estado actual
-            var infoDiv = document.getElementById("info");
-            if (infoDiv.style.display === "none") {
-                infoDiv.style.display = "block";
-            } else {
-                infoDiv.style.display = "none";
-            }
-        });
-    </script>
+    <button id="reiniciar">Reiniciar</button>
+</div>
+</div>
 </body>
 </html>
+
 
