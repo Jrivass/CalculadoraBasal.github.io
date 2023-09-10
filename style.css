@@ -1,62 +1,65 @@
-      /* Estilos para el cuerpo de la página */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     text-align: center;
     padding: 20px;
-}
-
-/* Estilos para el encabezado h1 */
-h1 {
-    font-size: 36px;
-    color: #333;
+  }
+  /* Estilos para el encabezado h1 */
+  
+  h1 {
+    font-size: 50px;
+    color: #ffffff;
     text-shadow: 2px 2px 4px #999;
-}
-
-/* Estilos para el campo de entrada de peso */
-#peso {
-    width: 100px;
+  }
+  
+  /* Estilos para el campo de entrada de peso */
+  
+  #peso {
+    width: 100px; 
     padding: 5px;
     font-size: 18px;
     border: 2px solid #ccc;
     border-radius: 5px;
-}
-
-/* Estilos para el botón "Calcular" */
-#calcular {
+  }
+  
+  /* Estilos para el botón "Calcular" */
+  
+  #calcular {
     padding: 10px 20px;
     font-size: 18px;
     background-color: #0077cc;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: px;
     cursor: pointer;
     transition: background-color 0.3s;
-}
-
-#calcular:hover {
+  }
+  
+  #calcular:hover {
     background-color: #0055aa;
-}
-
-/* Estilos para el resultado */
+  }
+  
+  /* Estilos para el resultado */
+  
 #resultado {
+    width: 300px;
+    padding: 10px;
+    margin: 20px auto; 
+    font-size: 18px;
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 2px 2px 4px #999;
-    padding: 10px;
-    margin-top: 20px;
-    font-size: 18px;
-    text-align: left;
-}
-
-/* Estilos para los botones de elección SC * 1500 o SC * 2000 */
-#opcionSC {
+  }
+  
+  /* Estilos para los botones de elección SC * 1500 o SC * 2000 */
+  
+  #opcionSC {
     display: none;
     margin-top: 20px;
-}
-
-#btn1500, #btn2000 {
+  }
+  
+  #btn1500, #btn2000 {
     padding: 10px 20px;
     font-size: 18px;
     background-color: #0077cc;
@@ -65,54 +68,273 @@ h1 {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-}
-
-#btn1500:hover, #btn2000:hover {
+  }
+  
+  #btn1500:hover, #btn2000:hover {
     background-color: #0055aa;
-}
-
-/* Estilos para el botón de explicación */
-#explicacion {
+  }
+  
+  /* Estilos para el botón de explicación */
+  
+  #explicacion {
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 18px; 
     background-color: #0077cc;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: px;
     cursor: pointer;
     transition: background-color 0.3s;
-}
-
-#explicacion:hover {
+  }
+  
+  #explicacion:hover {
     background-color: #0055aa;
-}
-
-/* Estilos para el cuadro de información */
+  }
+  
+  /* Estilos para el cuadro de información */
 #info {
-    display: none;
+    width: 45%; 
+    margin: 20px auto;
+    padding: 15px;
+    box-shadow: 0px 0px 8px #999;
     background-color: #f5f5f5;
     border: 1px solid #ddd;
     border-radius: 5px;
+    text-align: left; 
+  }
+  
+  /* Estilos para botones */
+  
+  #calcular, #btn1500, #btn2000, #explicacion {
     box-shadow: 2px 2px 4px #999;
-    padding: 20px;
-    margin-top: 20px;
-    text-align: left;
-}
-
-/* Estilos para la lista dentro del cuadro de información */
-#info ul {
+  }
+  
+  /* Estilos para cuadros */
+  
+  #resultado {
+    box-shadow: 0px 0px 8px #999;
+  }
+  
+  #peso {
+    box-shadow: inset 0px 0px 4px #aaa;  
+  }
+  
+  /* Estilos para la lista dentro del cuadro de información */
+  
+  #info ul {
     list-style-type: square;
     margin-left: 20px;
-}
-
-/* Estilos para los elementos de la lista dentro del cuadro de información */
-#info ul li {
+  }
+  
+  /* Estilos para los elementos de la lista dentro del cuadro de información */
+  
+  #info ul li {
     margin-bottom: 10px;
-}
-
-/* Estilos para el encabezado h2 dentro del cuadro de información */
-#info h2 {
+  }
+  
+  /* Estilos para el encabezado h2 dentro del cuadro de información */
+  
+  #info h2 {
     font-size: 24px;
     color: #333;
     text-shadow: 2px 2px 4px #999;
+    text-align:center;
+  }
+  /* Usar porcentajes en lugar de valores fijos */
+.calculadora {
+    width: 80%;
+    max-width: 400px; 
+  }
+  
+  #resultado {
+    width: 80%;
+    max-width: 300px;
+  } 
+  
+  #info {
+    width: 80%;
+    max-width: 600px;
+  }
+  
+  /* Imágenes responsivas */ 
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Media queries para diferentes tamaños */
+  @media (max-width: 600px) {
+    .calculadora {
+      width: 90%;
+    }
+    
+    #resultado {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 24px;
+    }
+    
+    #peso {
+      width: 90%;
+    }
+    
+    button {
+      width: 90%;
+    }    
+  }
+  /* Alineación de elementos */
+section {
+    text-align: center;
+  }
+  
+  .calculadora {
+    margin: 0 auto;
+  }
+  
+  /* Espaciado */
+  section {
+    padding: 30px 20px;
+  }
+  
+  #resultado, #info {
+    margin-top: 1px;
+  }
+  label {
+    font-size: 50px;
+    color: #ffffff;
+    font-size: 18px; 
+  }
+  
+  #resultado {
+    font-size: 20px;
+    padding: 20px;
+  }
+  
+  /* Sombras */ 
+  .calculadora {
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  #resultado {
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.1);
+  }
+  
+  /* Bordes redondeados */
+  .calculadora {
+    border-radius: 10px;
+  }
+  
+  #resultado {
+    border-radius: 8px; 
+  }
+  
+  #info {
+    border-radius: 8px;
+  } 
+  ​
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+#calculadora{
+    background: white;
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+#detalle{
+    background: #FF416C;
+    width: 50%;
+    height: 100%;
+    float: left;
+    color: #f6f5f7;
+}
+.contenido{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    overflow: hidden;
+    padding: 40px;
+}
+input {
+	width: 70%;
+    padding: 12px 15px;
+    border: none;
+    background-color: #eee;
+}
+  button {
+      font-size: 15px;
+      font-weight: bold;
+      padding: 12px 45px;
+      border-radius: 30px;
+      background-color: #FF416C;
+      border: 1px solid #FF416C;
+      color: #FFFFFF;
+      letter-spacing: 1px;
+      transition: transform 20ms ease-in;
+  }
+  button:active {
+      transform: scale(0.95);
+  }
+  #error{
+      color: red;
+      font-weight: bold;
+      display: none;
+  }
+  .resultado{
+      color: #0A81D1;
+      font-weight: bold;
+      font-size: 25px;
+      margin-bottom: 5px;
+      display: none;
+  }
+  #fondo-exterior {
+    /* Establece la imagen de fondo para el fondo exterior */
+    background-image: url('https://scrubsmag.com/wp-content/uploads/clipboard1.jpg');
+    background-size: cover; /* Ajusta el tamaño de la imagen al contenedor */
+    background-position: center; /* Centra la imagen */
+    width: 100%;
+    height: 100vh; /* Toma la altura completa de la ventana del navegador */
+    position: fixed; /* Fija el fondo para que esté detrás de todo */
+    top: 0;
+    left: 0;
+    z-index: -1; /* Coloca el fondo detrás de todo */
+}
+  #contenedor {
+    width: 900px;
+    height: 900px;
+    text-align: center;
+    /* Estas 3 líneas se encargan de centrar el div vertical y horizontalmente */
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden; 
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+      0 10px 10px rgba(0,0,0,0.22);
+    padding: 20px;
+    background-color: #f8f8f8;
+    background-image: url('https://images.creativemarket.com/0.1.0/ps/7062365/600/400/m2/fpnw/wm0/book-and-touch-lp-bl-cm-.jpg?1569935372&s=3cd09602b325f328b69b158f8456baf5&fmt=webp');
+    background-size: cover;
+    background-position: center;
+}
+#reiniciar {
+    position: fixed; /* Fija el botón en la ventana del navegador */
+    bottom: 910px;
+    left: 490px;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #0077cc;
+    color: #fff;
+    border: none;
+    border-radius: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.resultados-texto {
+    font-size: 22px; /* Tamaño de fuente deseado */
+    color: #080808; 
 }
