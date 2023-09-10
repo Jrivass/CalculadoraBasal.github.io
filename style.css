@@ -291,17 +291,17 @@ input {
       margin-bottom: 5px;
       display: none;
   }
-  #fondo-exterior {
+   #fondo-exterior {
     /* Establece la imagen de fondo para el fondo exterior */
-    background-image: url('https://scrubsmag.com/wp-content/uploads/clipboard1.jpg');
-    background-size: cover; /* Ajusta el tamaño de la imagen al contenedor */
-    background-position: center; /* Centra la imagen */
-    width: 100%;
-    height: 100vh; /* Toma la altura completa de la ventana del navegador */
-    position: fixed; /* Fija el fondo para que esté detrás de todo */
-    top: 0;
-    left: 0;
-    z-index: -1; /* Coloca el fondo detrás de todo */
+        background-image: url('https://scrubsmag.com/wp-content/uploads/clipboard1.jpg');
+        background-size: contain; /* Cambia "cover" a "contain" */
+        background-position: center;
+        width: 100%;
+        height: 124vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
 }
   #contenedor {
     width: 900px;
