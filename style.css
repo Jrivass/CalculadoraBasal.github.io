@@ -308,7 +308,7 @@ input {
     height: 900px;
     text-align: center;
     /* Estas 3 líneas se encargan de centrar el div vertical y horizontalmente */
-    position: absolute;
+    position: relative;
     inset: 0;
     margin: auto;
     border-radius: 10px;
@@ -322,9 +322,9 @@ input {
     background-position: center;
 }
 #reiniciar {
-    position: fixed; /* Fija el botón en la ventana del navegador */
-    bottom: 910px;
-    left: 490px;
+    position: absolute;
+    bottom: 96%; /* Puedes ajustar esto según tu preferencia, para colocarlo en la parte inferior */
+    left: 0px;
     padding: 10px 20px;
     font-size: 18px;
     background-color: #0077cc;
