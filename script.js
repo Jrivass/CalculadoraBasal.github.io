@@ -1,15 +1,15 @@
 // Controlador de eventos de carga del documento
 document.addEventListener("DOMContentLoaded", function() {
     // Obtener elementos HTML después de que se haya cargado el documento
-    var pesoInput = document.getElementById("peso");
-    var resultadoDiv = document.getElementById("resultado");
-    var opcionSCDiv = document.getElementById("opcionSC");
-    var btn1500 = document.getElementById("btn1500");
-    var btn2000 = document.getElementById("btn2000");
-    var reiniciarButton = document.getElementById("reiniciar"); // Botón de reinicio
+    let pesoInput = document.getElementById("peso");
+    let resultadoDiv = document.getElementById("resultado");
+    let opcionSCDiv = document.getElementById("opcionSC");
+    let btn1500 = document.getElementById("btn1500");
+    let btn2000 = document.getElementById("btn2000");
+    let reiniciarButton = document.getElementById("reiniciar"); // Botón de reinicio
 
     // Guardar el estado inicial de la página
-    var estadoInicial = {
+    let estadoInicial = {
         pesoInputValue: pesoInput.value,
         resultadoDivHTML: resultadoDiv.innerHTML,
         opcionSCDivStyle: opcionSCDiv.style.display
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Esta función se llama cuando se hace clic en el botón de calcular
         function calculate() {
-            var peso = parseFloat(pesoInput.value);
+            let peso = parseFloat(pesoInput.value);
 
             if (isNaN(peso) || peso <= 0 || peso >= 50) {
                 alert("Ingrese un peso válido entre 0 y 50 kg.");
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             }
 
-            var resultado = {};
+            let resultado = {};
 
             if (peso <= 10) {
                 resultado.volumenDiario = peso * 100;
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
             } 
             else {
                 // Calcular superficie corporal para peso mayor a 30 kg
-                var superficieCorporal = ((peso * 4) + 7) / (peso + 90);
+                let superficieCorporal = ((peso * 4) + 7) / (peso + 90);
                 opcionSCDiv.style.display = "block"; // Mostrar los botones de elección SC * 1500 o SC * 2000
 
                 btn1500.addEventListener("click", function() {
@@ -93,13 +93,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 resultadoDiv.innerHTML += `<br><br>Mantenimiento en cc/hr:<br> ${resultado.mantenimientoCCHr.toFixed(2)} cc/hr`;
             } else if (resultado.mmMasMedio !== null) {
                 resultadoDiv.innerHTML += `<br> m+m/2: <br>${resultado.mmMasMedio.toFixed(2)} cc/hr`;
-        }
+            }
         }
     }
 
     // Agregar evento al botón de explicación
-    var explicacionButton = document.getElementById("explicacion");
-    var infoDiv = document.getElementById("info");
+    let explicacionButton = document.getElementById("explicacion");
+    let infoDiv = document.getElementById("info");
     if (explicacionButton && infoDiv) {
         explicacionButton.addEventListener("click", function() {
             // Mostrar u ocultar la información según su estado actual
@@ -125,3 +125,4 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+
